@@ -1,14 +1,20 @@
 package com.helpdesk.domain;
 
 import com.helpdesk.domain.enums.Perfil;
-import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
+@Getter
+@Setter
 public class Cliente extends Pessoa{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @OneToMany(mappedBy = "cliente")
     private List<Chamado> chamados = new ArrayList<>();
